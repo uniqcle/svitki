@@ -1,0 +1,50 @@
+/* Сброс margin/padding + box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Убираем маркеры у списков */
+ul[role='list'], ol[role='list'] {
+  list-style: none;
+}
+
+/* Плавный скролл */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Убираем анимации для тех, кто их отключил */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Базовый body */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Картинки и медиа адаптивны */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Наследование шрифта у форм */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Перенос заголовков */
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}

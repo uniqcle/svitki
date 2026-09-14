@@ -1,0 +1,73 @@
+/* ========== media.css ========== */
+
+/* 1. Планшеты и маленькие ноутбуки (до 1024px) */
+@media (max-width: 1024px) {
+    .app-container {
+        grid-template-columns: 200px 1fr 200px; /* Сужаем сайдбары */
+    }
+
+    /* Пагинация адаптируется к ширине */
+    .main-pagination {
+        max-width: 400px; /* Сужаем */
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .mobile_menu {
+        display: block;
+    }
+}
+
+/* 2. Планшеты (до 820px) — когда сайдбары уже не влезают */
+@media (max-width: 820px) {
+    .app-container {
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+
+    .left-sidebar,
+    .right-sidebar {
+        display: none;
+    }
+
+    .main-container {
+        margin-bottom: 110px;
+    }
+}
+
+/* 3. Телефоны (до 600px) — всё в одну колонку */
+@media (max-width: 600px) {
+    /* Пагинация на телефонах */
+    .main-pagination {
+        font-size: 18px; /* Меньше текст */
+    }
+
+    /* Уменьшаем отступы для контента */
+    .main-container {
+        padding: 15px;
+        padding-bottom: 70px; /* Меньше отступ для пагинации */
+    }
+}
+
+/* 4. Маленькие телефоны (до 400px) — уменьшаем отступы */
+@media (max-width: 400px) {
+    .app-container {
+        gap: 5px;
+        padding: 5px;
+    }
+
+    .logo {
+        text-align: left; /* центрируем текст внутри логотипа */
+    }
+
+    /* Пагинация на маленьких телефонах */
+    .main-pagination {
+        font-size: 16px;
+    }
+}
