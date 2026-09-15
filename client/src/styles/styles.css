@@ -1,168 +1,156 @@
+/* ---------- 1. ПЕРЕМЕННЫЕ ---------- */
 
-
-
-.typeset-docs {
-  --typeset-font-body: var(--font-instrument-sans);
-  --typeset-font-heading: var(--font-figtree);
-  --typeset-font-mono: var(--font-geist-mono);
-  --typeset-size: 15px;
-  --typeset-leading: 1.75;
-  --typeset-flow: 1.25em;
+:root {
+    --pagination-height: 110px;
+    --footer-height: 110px;
+    --header-height: 70px;
+    --header-height-scrolled: 50px;
+    --header-padding-x: 120px;
+    --logo-scale: 1;
 }
 
+.typeset-docs {
+    --typeset-font-body: var(--font-instrument-sans);
+    --typeset-font-heading: var(--font-figtree);
+    --typeset-font-mono: var(--font-geist-mono);
+    --typeset-size: 15px;
+    --typeset-leading: 1.75;
+    --typeset-flow: 1.25em;
+}
 
 /* ---------- 2. ОСНОВНОЙ МАКЕТ ---------- */
 
 .app-container {
     display: grid;
     grid-template-areas:
-        "header header header" /* Первая строка: ШАПКА на всю ширину */
-        "left-sidebar main right-sidebar" /* Вторая строка: САЙДБАР (1/3) и КОНТЕНТ (2/3) */
-        "footer footer footer"; /* Третья строка: ФУТЕР на всю ширину */
-
-    grid-template-rows: auto 1fr 100px;
+        "header header header"
+        "left-sidebar main right-sidebar"
+        "footer footer footer";
+    grid-template-rows: var(--header-height) 1fr 100px;
     grid-template-columns: 250px 1fr 250px;
-    min-height: 100vh; 
-    gap: 5px; /* Отступы между блоками */
-    padding: 10px; /* Отступы по краям */
-
-    
-    
+    min-height: 100vh;
+    gap: 5px;
+    padding: 10px;
 }
- 
 
+/* ---------- 3. ШАПКА ---------- */
 
 .header {
     grid-area: header;
-    /* background: #3498db; */
-     
-    padding: 10px 20px;
+    padding: 0 var(--header-padding-x);
 
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     column-gap: 10px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+
+    height: var(--header-height);
+    box-sizing: border-box;
+
+    transition:
+        height 0.3s ease,
+        padding 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.logo{
-    display: flex;  
-    align-items: flex-start;   /* 👈 выравнивает картинку и текст по центру */
-    gap: 10px; 
+.app-container.is-scrolled .header {
+    height: var(--header-height-scrolled);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+}
+
+.app-container.is-scrolled .sub-logo {
+    display: none;
+}
+
+/* ---------- 4. ЛОГО ---------- */
+
+.logo {
+    grid-column: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+
+    transform: scale(var(--logo-scale));
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+}
+
+.app-container.is-scrolled .logo {
+    --logo-scale: 0.7;
 }
 
 .logo-block {
-    display: flex;         /* чтобы картинка внутри тоже не «плавала» */
-    align-items: center;
-    flex-shrink: 0;        /* картинка не сжимается, если текст длинный */
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
 }
 
-.logo-image{
-    width: 50px; 
-    height: 50px; 
+.logo-image {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     border: 1px solid rgb(0 0 0 / 0.8);
     background: white;
-    background-clip: padding-box;  /* фон не заходит под рамку */
-      object-fit: cover;     /* если картинка не квадратная — не искажается */
-    display: block;        /* убирает «строчный» зазор под картинкой */
+    background-clip: padding-box;
+    object-fit: cover;
+    display: block;
 
-    /* transition: filter 0.25s ease; */
     transition: transform 0.25s ease, box-shadow 0.25s ease;
-
 }
 
 .logo-image:hover {
     filter: brightness(1.1) saturate(1.2);
     transform: scale(1.06);
     box-shadow: 0 5px 12px rgb(0 0 0 / 0.25);
-    cursor: pointer; 
+    cursor: pointer;
 }
 
+/* ---------- 5. ТЕКСТ ЛОГО ---------- */
 
 .main-logo {
     font-family: var(--font-main-logo);
     color: rgb(0 0 0 / 0.8);
+    font-size: 40px;
     line-height: 1.1;
+    padding-bottom: 4px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.sub-logo{
-  font-family: var(--font-sub-logo);
-  display: block; 
-   
-  color: rgb(0 0 0 / 0.8);
-  
-} 
+.sub-logo {
+    font-family: var(--font-sub-logo);
+    display: block;
+    color: rgb(0 0 0 / 0.8);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
 
-
-
-
-
-.sub-logo span{
-    display: inline-block; 
-    background-color: rgb(249 209 059);; 
-    padding: 0px 10px 0px 10px; 
+.sub-logo span {
+    display: inline-block;
+    position: relative;
+    z-index: 11;
+    background-color: rgb(249 209 59);
+    padding: 0 10px;
     transform: rotate(-3deg);
-
-     transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 
 .sub-logo span:hover {
-     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 16px rgb(0 0 0 / 0.25);
+    transform: rotate(0deg);
+    box-shadow: 0 6px 10px rgb(0 0 0 / 0.25);
     filter: brightness(1.05);
 }
 
-
-
-
-.left-sidebar {
-    grid-area: left-sidebar; /* Новое имя */
-    background-color: antiquewhite;
-}
-
-.right-sidebar {
-    grid-area: right-sidebar; /* Новое имя */ 
-    background-color: aqua;
-}
-
-.main {
-    grid-area: main;
-    background: #e74c3c;
-    color: white;
-    font-size: 24px;
-
-    display: flex; 
-    flex-direction: column; 
-    align-items: center;
-    
-}
-
-.main-container{
-    max-width: 620px;
- 
-    width: 100%; 
-    padding: 20px; 
-    background-color: orchid; 
-    flex: 1; /* ✅ Занимает всё свободное место */
- 
-    overflow-y: auto;
-    box-sizing: border-box;
-    padding-bottom: 80px; /* 👈 Отступ для пагинации (50px + запас) */
-   
-
-}
-
-
-
-
-
-.logo {
-    grid-column: 2;
-    text-align: center;
-    font-size: 20px;
-    line-height: 1.2;
-    min-width: 0;
-}
+/* ---------- 6. МЕНЮ ---------- */
 
 .menu,
 .mobile_menu {
@@ -174,53 +162,81 @@
     display: none;
 }
 
-.main-pagination{
+/* ---------- 7. САЙДБАРЫ ---------- */
+
+.left-sidebar {
+    grid-area: left-sidebar;
+    background-color: antiquewhite;
+}
+
+.right-sidebar {
+    grid-area: right-sidebar;
+    background-color: aqua;
+}
+
+/* ---------- 8. КОНТЕНТ ---------- */
+
+.main {
+    grid-area: main;
+    background: #e74c3c;
+    color: white;
+    font-size: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container {
+    max-width: 620px;
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 80px;
+    background-color: orchid;
+    flex: 1;
+
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* ---------- 9. ПАГИНАЦИЯ ---------- */
+
+.main-pagination {
     background-color: aquamarine;
     height: 60px;
-    width: 100%; /* ✅ Добавляем */
-    max-width: 450px; /* Ограничиваем ширину как у контейнера */
-    flex-shrink: 0; /* ✅ Чтобы пагинация не сжималась */
+    width: 100%;
+    max-width: 450px;
+    flex-shrink: 0;
 
-
-     /* Центрируем текст пагинации */
     display: flex;
     justify-content: center;
     align-items: center;
     color: #333;
 
-
-    /* 🔥 Фиксируем пагинацию */
     position: fixed;
-    bottom: var(--pagination-height);  
-    left: 50%;  
-    transform: translateX(-50%); 
+    bottom: var(--pagination-height);
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 101;
-    
-
 }
+
+/* ---------- 10. ФУТЕР ---------- */
 
 .footer {
     grid-area: footer;
     background: #f39c12;
-    color: white;
+    color: #333;
     padding: 2%;
     font-size: 24px;
 
-    
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #333;
 
-
-    /* 🔥 Фиксируем футер */
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+    height: var(--footer-height);
     z-index: 100;
-
-    height: 110px; 
-
 }
- 

@@ -3,12 +3,15 @@
 /* 1. Планшеты и маленькие ноутбуки (до 1024px) */
 @media (max-width: 1024px) {
     .app-container {
-        grid-template-columns: 200px 1fr 200px; /* Сужаем сайдбары */
+        grid-template-columns: 200px 1fr 200px;
     }
 
-    /* Пагинация адаптируется к ширине */
+    .header {
+        --header-padding-x: 40px;
+    }
+
     .main-pagination {
-        max-width: 400px; /* Сужаем */
+        max-width: 400px;
     }
 
     .menu {
@@ -18,10 +21,14 @@
     .mobile_menu {
         display: block;
     }
+
+    .logo {
+        --logo-scale: 0.8;
+    }
 }
 
-/* 2. Планшеты (до 820px) — когда сайдбары уже не влезают */
-@media (max-width: 820px) {
+/* 2. Планшеты (до 820px) — сайдбары не влезают */
+@media (max-width: 768px) {
     .app-container {
         grid-template-areas:
             "header"
@@ -37,36 +44,45 @@
     }
 
     .main-container {
-        margin-bottom: 110px;
+        margin-bottom: var(--pagination-height);
+    }
+
+    .header {
+        --header-padding-x: 20px;
+        --header-height: 50px;
+        --header-height-scrolled: 50px; /* на планшете не сжимается */
+        grid-template-columns: auto 1fr;
     }
 
     .logo {
-    transform: scale(0.8);        /* 80% от исходного */
-    transform-origin: left center;  
-     transition: transform 0.3s ease;
-}
-
-}
-
-/* 3. Телефоны (до 600px) — всё в одну колонку */
-@media (max-width: 600px) {
-    /* Пагинация на телефонах */
-    .main-pagination {
-        font-size: 18px; /* Меньше текст */
+        align-items: center;
+        justify-content: center;
     }
 
-    /* Уменьшаем отступы для контента */
+    .sub-logo {
+        display: none;
+    }
+}
+
+/* 3. Телефоны (до 670px) */
+@media (max-width: 640px) {
+    .main-pagination {
+        font-size: 16px;
+    }
+
     .main-container {
         padding: 15px;
-        padding-bottom: 70px; /* Меньше отступ для пагинации */
+        padding-bottom: 70px;
     }
 
-    .logo-block{
-        display: none; 
+     
+
+    .main-logo {
+        font-size: 27px;
     }
 }
 
-/* 4. Маленькие телефоны (до 400px) — уменьшаем отступы */
+/* 4. Маленькие телефоны (до 400px) */
 @media (max-width: 400px) {
     .app-container {
         gap: 5px;
@@ -74,10 +90,9 @@
     }
 
     .logo {
-        text-align: left; /* центрируем текст внутри логотипа */
+        --logo-scale: 0.7;
     }
 
-    /* Пагинация на маленьких телефонах */
     .main-pagination {
         font-size: 16px;
     }

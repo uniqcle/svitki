@@ -1,18 +1,33 @@
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/images/logo/logo.jpg";
+import { useEffect, useState } from "react";
+
 
 function App() {
+
+const [scrolled, setScrolled] = useState(false);
+
+useEffect(() => {
+    const onScroll = () => {
+        // true, как только прокрутили больше 10px
+        setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // проверка при монтировании
+    return () => window.removeEventListener("scroll", onScroll);
+}, []);
+    
+
     return (
-        <div className="app-container">
+        <div className={`app-container ${scrolled ? "is-scrolled" : ""}`}>
             <header className="header">
                 <div className="logo">
                     <div className="logo-block">
                         <img src={logo} className="logo-image" alt="Логотип" />
                     </div>
                     <div>
-                        <div className="main-logo text-4xl">
-                            Свитки из Александрии
-                        </div>
+                        <div className="main-logo ">Свитки из Александрии</div>
                         <div className="sub-logo text-2xl">
                             <span> Античная философия</span>
                         </div>
