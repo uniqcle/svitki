@@ -1,18 +1,24 @@
-import "./index.css"; // Tailwind + сбросы
-//import "./styles/reset.css";
-import "./styles/styles.css";
-import "./styles/media.css";
-
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/images/logo/logo.jpg";
 
 function App() {
     return (
         <div className="app-container">
             <header className="header">
                 <div className="logo">
-                    <div>Свитки из Александрии</div>
-                    <div>Античная философия</div>
+                    <div className="logo-block">
+                        <img src={logo} className="logo-image" alt="Логотип" />
+                    </div>
+                    <div>
+                        <div className="main-logo text-4xl">
+                            Свитки из Александрии
+                        </div>
+                        <div className="sub-logo text-2xl">
+                            <span> Античная философия</span>
+                        </div>
+                    </div>
                 </div>
+
                 <div className="menu">Menu</div>
                 <div className="mobile_menu">mobile</div>
             </header>
@@ -21,7 +27,7 @@ function App() {
 
             <main className="main">
                 <div className="main-container">
-                    <div className="main-content">
+                    <div className="main-content typeset typeset-docs max-w-[37em]">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Accusantium fugiat maiores, odit eius velit asperiores
                         esse. Natus provident aspernatur in, dignissimos
@@ -86,7 +92,6 @@ function App() {
                     <div className="main-pagination">
                         Pagination
                         <Button>Нажми меня</Button>
-
                     </div>
                 </div>
             </main>

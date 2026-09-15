@@ -39,6 +39,13 @@
     .main-container {
         margin-bottom: 110px;
     }
+
+    .logo {
+    transform: scale(0.8);        /* 80% от исходного */
+    transform-origin: left center;  
+     transition: transform 0.3s ease;
+}
+
 }
 
 /* 3. Телефоны (до 600px) — всё в одну колонку */
@@ -52,6 +59,10 @@
     .main-container {
         padding: 15px;
         padding-bottom: 70px; /* Меньше отступ для пагинации */
+    }
+
+    .logo-block{
+        display: none; 
     }
 }
 
