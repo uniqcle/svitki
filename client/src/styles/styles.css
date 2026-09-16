@@ -9,6 +9,13 @@
     --typeset-flow: 1.25em;
 }
 
+
+::selection {
+  background-color: #fde68a; /* цвет фона выделения */
+  color: #1f2937;            /* цвет текста внутри выделения */
+}
+
+
 /* ---------- 2. ОСНОВНОЙ МАКЕТ ---------- */
 
 .app-container {
@@ -28,7 +35,7 @@
 
 .header {
     grid-area: header;
-    padding: 0 var(--header-padding-x);
+    padding: 5px var(--header-padding-x);
 
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -42,6 +49,8 @@
 
     height: var(--header-height);
     box-sizing: border-box;
+
+    border-radius: 10px; 
 
     transition:
         height 0.3s ease,
@@ -120,6 +129,7 @@
 .sub-logo {
     font-family: var(--font-sub-logo);
     display: block;
+    margin-right: 20%;
     color: rgb(0 0 0 / 0.8);
     text-align: center;
     position: relative;
@@ -149,6 +159,12 @@
     justify-self: end;
 }
 
+.menu{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+}
+
 .mobile_menu {
     display: none;
 }
@@ -156,20 +172,26 @@
 /* ---------- 7. САЙДБАРЫ ---------- */
 
 .left-sidebar {
+    height: 100%; 
     grid-area: left-sidebar;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
+    
+     
+    border-right: 1px solid rgb(0 0 0 / 0.1);
+    
 }
 
 .right-sidebar {
     grid-area: right-sidebar;
-    background-color: aqua;
+    /* background-color: aqua; */
+    border-left: 1px solid rgb(0 0 0 / 0.1);
 }
 
 /* ---------- 8. КОНТЕНТ ---------- */
 
 .main {
     grid-area: main;
-    background: #e74c3c;
+    /* background: #e74c3c; */
     color: white;
     font-size: 24px;
 
@@ -183,8 +205,11 @@
     width: 100%;
     padding: 20px;
     padding-bottom: 80px;
-    background-color: orchid;
+    background-color: #f7f3e7;
     flex: 1;
+
+    border: 1px solid black 0.8; 
+    border-radius: 20px; 
 
     overflow-y: auto;
     box-sizing: border-box;
@@ -193,42 +218,145 @@
 /* ---------- 9. ПАГИНАЦИЯ ---------- */
 
 .main-pagination {
-    
-     
     width: 100%;
-    max-width: 450px;
-    margin-bottom: 10px; 
-   
+    max-width: 370px;
+    margin-bottom: 10px;
+    background-color: rgb(0 0 0 / 0.8);
+    padding: 10px;
+    box-sizing: border-box;
 
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
-    
+    gap: 5px;
+
+    border-radius: 30px; 
 
     position: fixed;
     bottom: var(--pagination-height);
     left: 50%;
     transform: translateX(-50%);
-    z-index: 101;
+    z-index: 11;
 }
+
+.main-pagination > div {
+    min-width: 0;
+    flex: 0 1 auto;           /* дети могут сжиматься и растягиваться */
+     
+}
+
+
+
+
+
+
+/* Все ссылки пагинации */
+.main-pagination [data-slot="pagination-link"] {
+    background-color: white;
+    color: rgb(0 0 0 / 0.8);
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+     width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+}
+
+/* При наведении */
+.main-pagination [data-slot="pagination-link"]:hover {
+    background-color: rgb(230 190 40);
+}
+
+/* Активная страница (isActive) */
+.main-pagination [data-slot="pagination-link"][aria-current="page"] {
+    background-color: rgb(249 209 59);
+    color: black;
+    
+}
+
+/* Previous / Next */
+.main-pagination [data-slot="pagination-previous"],
+.main-pagination [data-slot="pagination-next"] {
+    background-color: transparent;
+    color: rgb(0 0 0 / 0.8);
+}
+
+
+
+.pagination-index-btn {
+    
+    color: rgb(0 0 0 / 0.8);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+}
+
+.pagination-index-btn:hover {
+    background-color: rgb(230 190 40);
+    cursor: pointer; 
+}
+
+
+
+
 
 /* ---------- 10. ФУТЕР ---------- */
 
 .footer {
     grid-area: footer;
-    background: #f39c12;
+    /* background: rgb(249 209 59); */
+    background: #E5DDD2;
     color: #333;
     padding: 2%;
     font-size: 24px;
 
-    display: flex;
-    justify-content: center;
+     display: flex;
+    justify-content: center;   /* 👈 центрирует .footer-container */
     align-items: center;
+    padding: 0 20px;           /* вместо padding: 2% — предсказуемее */
+    box-sizing: border-box;
 
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+ 
     height: var(--footer-height);
-    z-index: 100;
+    z-index: 12;
+
+ 
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;   /* 👈 было flex-around */
+    align-items: center;
+
+    width: 100%;              /* 👈 растягивается */
+    max-width: 620px;         /* 👈 как .main-container */
+    margin: 0 auto;           /* 👈 центрирует */
+}
+ 
+.footer-container  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    gap: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.footer-container > div:hover {
+    color: white;
 }
