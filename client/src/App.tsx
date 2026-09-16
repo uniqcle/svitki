@@ -104,9 +104,16 @@ useEffect(() => {
                         blanditiis praesentium.
                     </div>
 
-                    <div className="main-pagination">
-                        Pagination
-                        <Button>Нажми меня</Button>
+                    <div className="main-pagination flex gap-1">
+                        <div className="dark flex items-center gap-1 rounded-xl bg-card/90 p-1 shadow-xl backdrop-blur-xl">
+                            <Button>1</Button>
+                            <Button>1</Button>
+                            <Button>1</Button>
+                            <Button>1</Button>
+                        </div>
+                        <div className="dark flex items-center gap-1 rounded-xl bg-card/90 p-1 shadow-xl backdrop-blur-xl">
+                            Содержание
+                        </div>
                     </div>
                 </div>
             </main>

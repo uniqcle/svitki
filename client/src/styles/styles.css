@@ -1,13 +1,4 @@
-/* ---------- 1. ПЕРЕМЕННЫЕ ---------- */
 
-:root {
-    --pagination-height: 110px;
-    --footer-height: 110px;
-    --header-height: 70px;
-    --header-height-scrolled: 50px;
-    --header-padding-x: 120px;
-    --logo-scale: 1;
-}
 
 .typeset-docs {
     --typeset-font-body: var(--font-instrument-sans);
@@ -202,16 +193,17 @@
 /* ---------- 9. ПАГИНАЦИЯ ---------- */
 
 .main-pagination {
-    background-color: aquamarine;
-    height: 60px;
+    
+     
     width: 100%;
     max-width: 450px;
-    flex-shrink: 0;
+    margin-bottom: 10px; 
+   
 
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #333;
+    
 
     position: fixed;
     bottom: var(--pagination-height);
