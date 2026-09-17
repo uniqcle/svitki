@@ -1,17 +1,17 @@
  
 /* ---------- 1. ПЕРЕМЕННЫЕ ---------- */
- 
-
-:root {
+ :root {
     --font-main-logo: 'Caesar Dressing SHA', cursive;
-  --font-sub-logo: 'Caveat', cursive;
-  --font-weight-main: 500;
-    --pagination-height: 110px;
-    --footer-height: 110px;
+    --font-sub-logo: 'Caveat', cursive;
+    --font-weight-main: 500;
+
     --header-height: 70px;
     --header-height-scrolled: 50px;
     --header-padding-x: 120px;
     --logo-scale: 1;
+
+    --pagination-height: 85px;
+    --footer-height: 90px;
 }
 
 

@@ -1,0 +1,36 @@
+
+.breadcrumbs {
+    
+    color: rgb(0 0 0 / 0.55);        /* приглушённый цвет */
+    line-height: 1.4;
+    margin-top: 10px; 
+}
+
+/* Все ссылки и текущая страница */
+.breadcrumbs [data-slot="breadcrumb-link"],
+.breadcrumbs [data-slot="breadcrumb-page"] {
+    font-size: inherit;
+    color: inherit;
+}
+
+/* Ссылки — чуть темнее при наведении */
+.breadcrumbs [data-slot="breadcrumb-link"]:hover {
+    color: rgb(0 0 0 / 0.85);
+}
+
+/* Текущая страница — чуть темнее остальных */
+.breadcrumbs [data-slot="breadcrumb-page"] {
+    color: rgb(0 0 0 / 0.75);
+}
+
+/* Разделитель — ещё светлее */
+.breadcrumbs [data-slot="breadcrumb-separator"] {
+    color: rgb(0 0 0 / 0.35);
+}
+
+/* Иконка домика — по размеру шрифта */
+.breadcrumbs svg {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+}
