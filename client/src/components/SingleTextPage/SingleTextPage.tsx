@@ -17,9 +17,7 @@ export function SingleTextPage() {
                     <img src={horace} alt="" />
                     <div>
                         <div>Гораций</div>
-                        <div>
-                           65 - 8 года до н. э.
-                        </div>
+                        <div>65 - 8 года до н. э.</div>
                     </div>
                 </div>
 
@@ -41,8 +39,11 @@ export function SingleTextPage() {
                 </div>
             </div>
 
-            <div className="content">
-                фывафываыфва sit
+            <div className={styles.content}>
+                фывафываыфва sit amet consectetur adipisicing elit. Accusantium
+                fugiat maiores, odit eius velit asperiores esse. Natus provident
+                aspernatur in, dignissimos voluptate quia sint soluta eius
+                deleniti. Odit, blanditiis praesentium. Lorem ipsum dolor sit
                 amet consectetur adipisicing elit. Accusantium fugiat maiores,
                 odit eius velit asperiores esse. Natus provident aspernatur in,
                 dignissimos voluptate quia sint soluta eius deleniti. Odit,
@@ -65,10 +66,7 @@ export function SingleTextPage() {
                 adipisicing elit. Accusantium fugiat maiores, odit eius velit
                 asperiores esse. Natus provident aspernatur in, dignissimos
                 voluptate quia sint soluta eius deleniti. Odit, blanditiis
-                praesentium. Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Accusantium fugiat maiores, odit eius velit asperiores
-                esse. Natus provident aspernatur in, dignissimos voluptate quia
-                sint soluta eius deleniti. Odit, blanditiis praesentium.
+                praesentium.
             </div>
         </div>
     );
