@@ -1,0 +1,217 @@
+/* =========================================== */
+/* ---------- КОНТЕЙНЕР ---------- */
+/* =========================================== */
+
+.translator_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+/* =========================================== */
+/* ---------- КРАТКАЯ ИНФОРМАЦИЯ ---------- */
+/* =========================================== */
+
+.translator_short {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+/* Фото */
+.translator_image {
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    border: 1px solid rgb(0 0 0 / 0.08);
+    background: white;
+
+    transition:
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.translator_image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.translator_image:hover {
+    border-color: rgb(249 209 59);
+    box-shadow: 0 6px 18px rgb(0 0 0 / 0.15);
+}
+
+/* Текстовая часть */
+.translator_desc {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.translator_fullName {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: rgb(0 0 0 / 0.85);
+}
+
+.translator_birthDate {
+    font-size: 13px;
+    color: rgb(0 0 0 / 0.45);
+    line-height: 1.2;
+}
+
+.translator_desc_text {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgb(0 0 0 / 0.7);
+
+	font-style: italic; 
+}
+
+/* =========================================== */
+/* ---------- ДЛИННАЯ ЧАСТЬ ---------- */
+/* =========================================== */
+
+.translator_long {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* =========================================== */
+/* ---------- ПЕРЕКЛЮЧАТЕЛЬ ---------- */
+/* =========================================== */
+
+.translator_toggle {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    padding: 4px;
+    background-color: rgb(0 0 0 / 0.03);
+    border-radius: 999px;
+    align-self: center;
+}
+
+.translator_toggle [data-slot="toggle-group-item"] {
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+
+    color: rgb(0 0 0 / 0.65);
+    background-color: transparent;
+    border: none;
+    border-radius: 999px;
+
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.translator_toggle [data-slot="toggle-group-item"]:hover {
+    background-color: rgb(249 209 59 / 0.25);
+    color: rgb(0 0 0 / 0.85);
+}
+
+.translator_toggle [data-slot="toggle-group-item"][data-state="on"],
+.translator_toggle [data-slot="toggle-group-item"][aria-pressed="true"] {
+    background-color: rgb(249 209 59);
+    color: rgb(0 0 0 / 0.9);
+}
+
+/* =========================================== */
+/* ---------- КОНТЕНТ ПЕРЕКЛЮЧАТЕЛЯ ---------- */
+/* =========================================== */
+
+.biography_toggle_value,
+.works_toggle_value {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgb(0 0 0 / 0.75);
+}
+
+/* =========================================== */
+/* ---------- МЕДИА ---------- */
+/* =========================================== */
+
+@media (max-width: 640px) {
+    .translator_container {
+        margin-top: 20px;
+    }
+
+    .translator_short {
+        gap: 16px;
+    }
+
+    .translator_image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .translator_fullName {
+        font-size: 22px;
+    }
+
+    .translator_desc_text {
+        font-size: 14px;
+    }
+
+    .biography_toggle_value,
+    .works_toggle_value {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .translator_short {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .translator_image {
+        width: 88px;
+        height: 88px;
+    }
+
+    .translator_fullName {
+        font-size: 20px;
+    }
+
+    .translator_desc {
+        align-items: center;
+    }
+
+    .translator_birthDate {
+        font-size: 12px;
+    }
+
+    .translator_desc_text {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .translator_toggle [data-slot="toggle-group-item"] {
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+
+    .biography_toggle_value,
+    .works_toggle_value {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+}

@@ -58,14 +58,6 @@ export function PaginationBar() {
                         </PaginationItem>
 
                         <PaginationItem>
-                            <PaginationLink href="#">IV</PaginationLink>
-                        </PaginationItem>
-
-                        <PaginationItem>
-                            <PaginationLink href="#">V</PaginationLink>
-                        </PaginationItem>
-
-                        <PaginationItem>
                             <PaginationEllipsis />
                         </PaginationItem>
 

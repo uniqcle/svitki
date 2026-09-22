@@ -1,5 +1,16 @@
 /* ========== media.css ========== */
 
+
+@media (max-width: 1760px) {
+    .menu {
+        display: none;
+    }
+
+    .mobile_menu {
+        display: block;
+    }
+}
+
 /* =========================================== */
 /* 1. Планшеты и маленькие ноутбуки (до 1024px) */
 /* =========================================== */
@@ -17,13 +28,7 @@
         max-width: 400px;
     }
 
-    .menu {
-        display: none;
-    }
 
-    .mobile_menu {
-        display: block;
-    }
 
     .logo {
         --logo-scale: 0.8;

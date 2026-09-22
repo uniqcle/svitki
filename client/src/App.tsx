@@ -14,7 +14,7 @@ function AppLayout() {
             <Header />
             <LeftSidebar />
             <main className="main">
-                <div className="main-container">
+                <div className="main-container ">
                     <Outlet /> {/* 👈 только Outlet, без SingleTextPage */}
                 </div>
             </main>

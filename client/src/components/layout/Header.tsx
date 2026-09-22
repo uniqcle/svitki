@@ -1,24 +1,35 @@
 import {
-    LuChevronsLeft,
-    LuChevronsRight,
-    LuList,
-    LuHouse,
-    LuSearch,
-    LuHeadphones,
-    LuBookmark,
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+
+import { DesktopMenu } from "../DesktopMenu/DesktopMenu";
+import { MobileMenu } from "../MobileMenu/MobileMenu";
+
+import {
+    LuAlignJustify,
     LuBookOpen,
     LuUser,
-    LuAlignJustify,
+    LuInfo,
+    LuUsers,
 } from "react-icons/lu";
+
+import { Link } from "react-router";
+
 import logo from "@/assets/images/logo/logo.jpg";
 
 export function Header() {
     return (
         <header className="header">
             <div className="logo">
-                <div className="logo-block">
+                <Link to="/" className="logo-block">
                     <img src={logo} className="logo-image" alt="Логотип" />
-                </div>
+                </Link>
+
                 <div>
                     <div className="main-logo ">Свитки из Александрии</div>
                     <div className="sub-logo text-2xl">
@@ -28,25 +39,11 @@ export function Header() {
             </div>
 
             <div className="menu">
-                <div>
-                    <LuBookOpen />
-                </div>
-                <div>
-                    <LuSearch />
-                </div>
-                <div>
-                    <LuHeadphones />
-                </div>
-                <div>
-                    <LuBookmark />
-                </div>
-                <div>
-                    <LuUser />
-                </div>
+                <DesktopMenu />
             </div>
 
             <div className="mobile_menu">
-                <LuAlignJustify />
+                <MobileMenu />
             </div>
         </header>
     );

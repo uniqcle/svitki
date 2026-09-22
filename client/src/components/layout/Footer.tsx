@@ -18,11 +18,11 @@ export function Footer() {
                 </div>
                 <div>
                     <LuBookOpen />
-                    <span>Каталог</span>
+                    <span>Сочинения</span>
                 </div>
                 <div>
                     <LuSearch />
-                    <span>Поиск</span>
+                    <span>Авторы</span>
                 </div>
                 <div>
                     <LuHeadphones />
@@ -30,7 +30,7 @@ export function Footer() {
                 </div>
                 <div>
                     <LuBookmark />
-                    <span>Закладки</span>
+                    <span>Мои свитки</span>
                 </div>
                 {/* <div>
                         <LuUser />
