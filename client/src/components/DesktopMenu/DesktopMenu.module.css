@@ -5,10 +5,19 @@
 .menu {
     display: flex;
     align-items: center;
+    gap: 4px;
+}
+
+:global([data-slot="navigation-menu-viewport"]) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
 }
 
 /* =========================================== */
-/* ---------- ПУНКТ МЕНЮ (верхний уровень) ---------- */
+/* ---------- ПУНКТ МЕНЮ ---------- */
 /* =========================================== */
 
 .menu [data-slot="navigation-menu-trigger"],
@@ -17,9 +26,12 @@
     align-items: center;
     gap: 6px;
 
-    padding: 6px 10px;      
-    font-size: 13px;        
+    height: 34px;
+    padding: 0 14px;
+
+    font-size: 13px;
     font-weight: 500;
+    line-height: 1;
 
     color: rgb(0 0 0 / 0.7);
     background-color: transparent;
@@ -28,15 +40,19 @@
 
     cursor: pointer;
     text-decoration: none;
+    white-space: nowrap;
 
     transition:
         background-color 0.2s ease,
         color 0.2s ease;
 }
 
-/* Наведение — золотой */
 .menu [data-slot="navigation-menu-trigger"]:hover,
-.menu [data-slot="navigation-menu-link"]:hover,
+.menu [data-slot="navigation-menu-link"]:hover {
+    background-color: rgb(249 209 59 / 0.25);
+    color: rgb(0 0 0 / 0.85);
+}
+
 .menu [data-slot="navigation-menu-trigger"][data-state="open"] {
     background-color: rgb(249 209 59);
     color: rgb(0 0 0 / 0.9);
@@ -46,45 +62,115 @@
 /* ---------- ВЫПАДАЮЩИЙ СПИСОК ---------- */
 /* =========================================== */
 
-.menu-dropdown {
+/* Обёртка shadcn — обнуляем (класс передан в JSX) */
+.menuContent {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;      /* 👈 */
+    box-shadow: none !important;
+    padding: 0 !important;
+     border-radius: 0 !important;   /* 👈 убираем скругление */
+}
+
+/* Наш список */
+.menuDropdown {
     display: flex;
     flex-direction: column;
     gap: 2px;
 
     min-width: 200px;
     padding: 6px;
+    margin: 0;
 
     list-style: none;
-    margin: 0;
+
+    background-color: white;
+    border: 1px solid rgb(0 0 0 / 0.06);
+    border-radius: 10px;
+     box-shadow: 0 4px 16px rgb(0 0 0 / 0.08);   /* 👈 мягкая */
 }
 
-.menu-dropdown a {
+.menuDropdown a {
     display: block;
     padding: 8px 12px;
 
-    font-size: 14px;
+    font-size: 13px;
     color: rgb(0 0 0 / 0.7);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 999px;
 
     transition:
         background-color 0.2s ease,
         color 0.2s ease;
 }
 
-.menu-dropdown a:hover {
+.menuDropdown a:hover {
     background-color: rgb(249 209 59 / 0.25);
     color: rgb(0 0 0 / 0.9);
 }
+
+
+
+
+
+
+/* Верхний пункт (без выпадающего) */
+.menuLinkTop {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    height: 34px;
+    padding: 0 14px;
+
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+
+    color: rgb(0 0 0 / 0.7);
+    background-color: transparent;
+    border-radius: 999px;
+    text-decoration: none;
+
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menuLinkTop:hover {
+    background-color: rgb(249 209 59 / 0.25);
+    color: rgb(0 0 0 / 0.85);
+}
+
+/* Активный */
+.isActive {
+    background-color: rgb(249 209 59);
+    color: rgb(0 0 0 / 0.9);
+}
+
+
 
 /* =========================================== */
 /* ---------- МЕДИА ---------- */
 /* =========================================== */
 
+@media (max-width: 1440px) {
+    .menu [data-slot="navigation-menu-trigger"],
+    .menu [data-slot="navigation-menu-link"] {
+        height: 32px;
+        padding: 0 12px;
+        font-size: 12px;
+    }
+
+    .menuDropdown a {
+        font-size: 12px;
+        padding: 7px 10px;
+    }
+}
+
 @media (max-width: 1280px) {
     .menu [data-slot="navigation-menu-trigger"],
     .menu [data-slot="navigation-menu-link"] {
-        padding: 8px 10px;
-        font-size: 13px;
+        height: 30px;
+        padding: 0 10px;
+        font-size: 12px;
     }
 }

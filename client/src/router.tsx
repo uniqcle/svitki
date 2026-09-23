@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router";
 import AppLayout from "@/App";
-// import { SingleTextPage } from "@/components/SingleTextPage/SingleTextPage";
+import { MainPage } from "./pages/MainPage/MainPage";
+import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 import { AuthorsListPage } from "./pages/AuthorsListPage/AuthorsListPage";
-import { MainContent } from "@/components/layout/MainContent";
+import { SingleContent } from "@/components/layout/SingleContent";
 import { AuthorPage } from "./pages/AuthorPage/AuthorPage";
 import { TranslatorsListPage } from "./pages/TranslatorsListPage/TranslatorsListPage";
 import { TranslatorPage } from "./pages/TranslatorPage/TranslatorPage";
@@ -12,8 +13,8 @@ export const router = createBrowserRouter([
         path: "/",
         Component: AppLayout,
         children: [
-            { index: true, Component: MainContent },
-
+            { index: true, Component: MainPage },
+            { path: "catalog", Component: CatalogPage },
             { path: "authors", Component: AuthorsListPage },
             { path: "author", Component: AuthorsListPage },
             { path: "author/:authorId", Component: AuthorPage },
@@ -25,13 +26,13 @@ export const router = createBrowserRouter([
 
             {
                 path: "work/:workId",
-                Component: MainContent,
+                Component: SingleContent,
                 children: [
-                    { index: true, Component: MainContent },
-                    { path: "chapter/:chapterId", Component: MainContent },
+                    { index: true, Component: SingleContent },
+                    { path: "chapter/:chapterId", Component: SingleContent },
                     {
                         path: "chapter/:chapterId/page/:pageId",
-                        Component: MainContent,
+                        Component: SingleContent,
                     },
                 ],
             },

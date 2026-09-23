@@ -4,15 +4,13 @@ import { Breadcrumbs } from "../Breadcrumbs/Breadcrumbs";
 import { PaginationBar } from "../PaginationBar/PaginationBar";
  
 
-export function MainContent() {
+export function SingleContent() {
     return (
         <>
             <Breadcrumbs />
-
-            <div className="main-content typeset typeset-docs max-w-[37em]">
+            <div className=" typeset typeset-docs ">
                 <SingleTextPage />
             </div>
-
             <PaginationBar />
         </>
     );

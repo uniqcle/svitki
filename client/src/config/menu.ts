@@ -14,11 +14,12 @@ export const menuItems: MenuItem[] = [
     },
     {
         label: "Сочинения",
-        children: [
-            { label: "Все", href: "/work" },
-            { label: "По эпохам", href: "/work/epochs" },
-            { label: "По жанрам", href: "/work/genres" },
-        ],
+        href: "/catalog",
+        // children: [
+        //     { label: "Всей античности", href: "/catalog" },
+        //     { label: "Древних греков", href: "/catalog/epochs" },
+        //     { label: "Древних римлян", href: "/catalog/genres" },
+        // ],
     },
     {
         label: "Персоналии",

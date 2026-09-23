@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
 }
 
 /* =========================================== */
@@ -19,7 +18,6 @@
     gap: 24px;
 }
 
-/* Фото */
 .author_image {
     width: 140px;
     height: 140px;
@@ -48,7 +46,6 @@
     box-shadow: 0 6px 18px rgb(0 0 0 / 0.15);
 }
 
-/* Текстовая часть */
 .author_desc {
     display: flex;
     flex-direction: column;
@@ -74,8 +71,7 @@
     font-size: 15px;
     line-height: 1.6;
     color: rgb(0 0 0 / 0.7);
-
-	font-style: italic; 
+    font-style: italic;
 }
 
 /* =========================================== */
@@ -89,25 +85,36 @@
 }
 
 /* =========================================== */
-/* ---------- ПЕРЕКЛЮЧАТЕЛЬ ---------- */
+/* ---------- TABS ---------- */
 /* =========================================== */
 
-.author_toggle {
+.author_tabs [data-slot="tabs-list"] {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
+    gap: 4px;
 
+    width: fit-content;
+    margin: 0 auto 16px;
     padding: 4px;
+
     background-color: rgb(0 0 0 / 0.03);
     border-radius: 999px;
-    align-self: center;
+    border-bottom: none;
 }
 
-.author_toggle [data-slot="toggle-group-item"] {
-    padding: 6px 16px;
+.author_tabs [data-slot="tabs-trigger"] {
+    position: relative;
+
+    height: 34px;                    /* 👈 фиксируем высоту */
+    padding: 0 16px;                 /* 👈 убираем вертикальный padding */
+
+    display: inline-flex;            /* 👈 центрируем текст */
+    align-items: center;
+    justify-content: center;
+
     font-size: 13px;
     font-weight: 500;
+    line-height: 1;                  /* 👈 убираем «раздувание» */
 
     color: rgb(0 0 0 / 0.65);
     background-color: transparent;
@@ -120,26 +127,66 @@
         color 0.2s ease;
 }
 
-.author_toggle [data-slot="toggle-group-item"]:hover {
+/* Наведение */
+.author_tabs [data-slot="tabs-trigger"]:hover {
     background-color: rgb(249 209 59 / 0.25);
     color: rgb(0 0 0 / 0.85);
 }
 
-.author_toggle [data-slot="toggle-group-item"][data-state="on"],
-.author_toggle [data-slot="toggle-group-item"][aria-pressed="true"] {
+/* Активная — жёлтая плашка */
+.author_tabs [data-slot="tabs-trigger"][data-state="active"],
+.author_tabs [data-slot="tabs-trigger"][aria-selected="true"] {
     background-color: rgb(249 209 59);
     color: rgb(0 0 0 / 0.9);
 }
 
+/* Убираем подчёркивание от variant="line" */
+.author_tabs [data-slot="tabs-trigger"][data-state="active"]::after {
+    display: none;
+}
+
+.author_tabs [data-slot="tabs-content"] {
+    margin-top: 0;
+    outline: none;
+}
+
 /* =========================================== */
-/* ---------- КОНТЕНТ ПЕРЕКЛЮЧАТЕЛЯ ---------- */
+/* ---------- CARD ---------- */
 /* =========================================== */
 
-.biography_toggle_value,
-.works_toggle_value {
+.author_card {
+    background-color: transparent;
+    /* border: 1px solid rgb(0 0 0 / 0.1); */
+    border: none; 
+    border-radius: 16px;
+    
+    box-shadow: none;
+}
+
+.author_card [data-slot="card-header"] {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.author_card [data-slot="card-title"] {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(0 0 0 / 0.85);
+    line-height: 1.3;
+}
+
+.author_card [data-slot="card-description"] {
+    font-size: 13px;
+    color: rgb(0 0 0 / 0.5);
+    line-height: 1.4;
+}
+
+.author_card [data-slot="card-content"] {
     font-size: 15px;
-    line-height: 1.75;
-    color: rgb(0 0 0 / 0.75);
+    line-height: 1.7;
+    color: rgb(0 0 0 / 0.7);
 }
 
 /* =========================================== */
@@ -147,10 +194,6 @@
 /* =========================================== */
 
 @media (max-width: 640px) {
-    .author_container {
-        margin-top: 20px;
-    }
-
     .author_short {
         gap: 16px;
     }
@@ -168,8 +211,20 @@
         font-size: 14px;
     }
 
-    .biography_toggle_value,
-    .works_toggle_value {
+    .author_tabs [data-slot="tabs-trigger"] {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .author_card {
+        padding: 16px;
+    }
+
+    .author_card [data-slot="card-title"] {
+        font-size: 16px;
+    }
+
+    .author_card [data-slot="card-content"] {
         font-size: 14px;
     }
 }
@@ -204,14 +259,20 @@
         line-height: 1.5;
     }
 
-    .author_toggle [data-slot="toggle-group-item"] {
-        padding: 5px 12px;
+    .author_tabs [data-slot="tabs-trigger"] {
+        padding: 6px 10px;
         font-size: 12px;
     }
 
-    .biography_toggle_value,
-    .works_toggle_value {
+    .author_card {
+        padding: 14px;
+    }
+
+    .author_card [data-slot="card-title"] {
+        font-size: 15px;
+    }
+
+    .author_card [data-slot="card-content"] {
         font-size: 13px;
-        line-height: 1.6;
     }
 }
