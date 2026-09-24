@@ -9,7 +9,7 @@ import horace from "@/assets/images/authors/horace.png";
 
  
 import { useClickOutside } from "@/hooks/useClickOutside";
-
+import { CatalogList } from "@/components/CatalogList/CatalogList";
 
 const genres = [
     { label: "Поэзия", value: "poetry" },
@@ -58,16 +58,6 @@ export function CatalogPage() {
         genresOpen, // 👈 enabled: только когда панель открыта
     );
 
-    const toggleGenre = (value: string) => {
-        setSelectedGenres((prev) =>
-            prev.includes(value)
-                ? prev.filter((v) => v !== value)
-                : [...prev, value],
-        );
-    };
-
-    const clearGenres = () => setSelectedGenres([]);
-
     return (
         <div className={`${styles.catalog_container} `}>
             <div className={styles.catalog_filter}>
@@ -88,7 +78,6 @@ export function CatalogPage() {
                     />
                 </div>
 
-                
                 {/* 2-я строка: Жанры */}
                 <GenreFilter
                     label="Жанры:"
@@ -101,8 +90,8 @@ export function CatalogPage() {
             <Separator />
 
             <div className={styles.catalog_list}>
-                <div className="typeset typeset-docs">
-                    Здесь будет список произведений...
+                <div className="">
+                    <CatalogList />
                 </div>
             </div>
         </div>

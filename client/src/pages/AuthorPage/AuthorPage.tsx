@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
+import { CatalogList } from "@/components/CatalogList/CatalogList";
 
 export function AuthorPage() {
     // const { author } = useParams();
@@ -71,10 +72,7 @@ export function AuthorPage() {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
-                                Lorem ipsum dolor, sit amet consectetur
-                                adipisicing elit. Minus officiis ad optio
-                                quibusdam libero beatae deserunt distinctio sit
-                                totam natus saepe velit autem.
+                                <CatalogList />
                             </CardContent>
                         </Card>
                     </TabsContent>
