@@ -1,0 +1,352 @@
+/* =========================================== */
+/* ---------- КОНТЕЙНЕР ---------- */
+/* =========================================== */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* =========================================== */
+/* ---------- БЛОК ЗАГОЛОВКА ---------- */
+/* =========================================== */
+
+.titleBlock {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+/* Левая половина — картинка */
+.titleImage {
+    flex: 0 0 50%;
+    max-width: 50%;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    overflow: hidden;
+
+    border: 1px solid rgb(0 0 0 / 0.06);
+    background-color: rgb(0 0 0 / 0.03);
+}
+
+.titleImage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Правая половина — текст */
+.titleInfo {
+    flex: 0 0 50%;
+    max-width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+/* 👇 1. Заголовок — крупнее */
+.title {
+    font-family: var(--font-main-logo);
+                    /* 👈 было 32px */
+    font-weight: 500;
+    line-height: 1.15;
+    color: rgb(0 0 0 / 0.85);
+    margin-bottom: 12px;
+}
+
+.titleInfo .title{
+	font-size: 30px; 
+}
+
+/* Строки «Автор: …» */
+.titleInfo > div {
+    font-size: 13px;
+    line-height: 1.4;
+    color: rgb(0 0 0 / 0.5);
+}
+
+/* 👇 2. Значения (span) — курсив */
+.titleInfo > div span {
+    color: rgb(0 0 0 / 0.8);
+    font-style: italic;
+}
+
+/* =========================================== */
+/* ---------- КНОПКА «ЧИТАТЬ ОНЛАЙН» ---------- */
+/* =========================================== */
+
+.readButton {
+    align-self: flex-start;
+    margin-top: 20px;
+
+    height: 44px;
+    padding: 0 28px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.02em;
+
+    color: rgb(0 0 0 / 0.9);
+    background-color: rgb(249 209 59);
+    border: none;
+    border-radius: 999px;
+
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+}
+
+.readButton:hover {
+    background-color: rgb(230 190 40);
+    transform: translateY(-2px);
+
+    /* 👇 тёмная тень */
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.3);
+}
+
+.readButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+}
+
+/* =========================================== */
+/* ---------- TABS ---------- */
+/* =========================================== */
+
+.container [data-slot="tabs-list"] {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+
+    width: fit-content;
+    margin: 0 auto 16px;
+    padding: 4px;
+
+    background-color: rgb(0 0 0 / 0.03);
+    border-radius: 999px;
+}
+
+.container [data-slot="tabs-trigger"] {
+    height: 34px;
+    padding: 0 16px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+
+    color: rgb(0 0 0 / 0.65);
+    background-color: transparent;
+    border: none;
+    border-radius: 999px;
+
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.container [data-slot="tabs-trigger"]:hover {
+    background-color: rgb(249 209 59 / 0.25);
+    color: rgb(0 0 0 / 0.85);
+}
+
+.container [data-slot="tabs-trigger"][data-state="active"],
+.container [data-slot="tabs-trigger"][aria-selected="true"] {
+    background-color: rgb(249 209 59);
+    color: rgb(0 0 0 / 0.9);
+}
+
+/* =========================================== */
+/* ---------- CARD ---------- */
+/* =========================================== */
+
+.container [data-slot="card"] {
+    background-color: transparent;
+    /* border: 1px solid rgb(0 0 0 / 0.08); */
+    border-radius: 16px;
+    box-shadow: none;
+    padding: 20px;
+}
+
+.container [data-slot="card-header"] {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.container [data-slot="card-title"] {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(0 0 0 / 0.85);
+    line-height: 1.3;
+}
+
+.container [data-slot="card-description"] {
+    font-size: 13px;
+    color: rgb(0 0 0 / 0.5);
+    line-height: 1.4;
+}
+
+.container [data-slot="card-content"] {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgb(0 0 0 / 0.7);
+}
+
+/* =========================================== */
+/* ---------- ОГЛАВЛЕНИЕ (список глав) ---------- */
+/* =========================================== */
+
+.indexList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.indexItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 14px;
+
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgb(0 0 0 / 0.75);
+
+    border-radius: 999px;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.indexItem:hover {
+    background-color: rgb(249 209 59 / 0.25);
+    color: rgb(0 0 0 / 0.9);
+    transform: translateX(2px);
+}
+
+.indexItem svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: rgb(0 0 0 / 0.45);
+}
+
+.indexItem.isLocked {
+    color: rgb(0 0 0 / 0.4);
+    /* cursor: not-allowed; */
+}
+
+.indexItem.isLocked:hover {
+    background-color: transparent;
+    color: rgb(0 0 0 / 0.4);
+    transform: none;
+}
+
+/* =========================================== */
+/* ---------- МЕДИА ---------- */
+/* =========================================== */
+
+@media (max-width: 768px) {
+    .titleBlock {
+        gap: 16px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .titleInfo > div {
+        font-size: 12px;
+    }
+
+    .readButton {
+        height: 38px;
+        padding: 0 22px;
+        font-size: 13px;
+    }
+
+    .container [data-slot="tabs-trigger"] {
+        height: 30px;
+        padding: 0 12px;
+        font-size: 12px;
+    }
+
+    .indexItem {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+
+/* 👇 5. Мобильная адаптация */
+@media (max-width: 480px) {
+    .titleBlock {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .titleImage,
+    .titleInfo {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .titleImage {
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    
+    .title {
+        font-size: 26px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .titleInfo {
+        
+       
+    }
+
+    .buttonWrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;   /* 👈 по центру */
+		 align-self: stretch; 
+        margin-top: 16px;
+    }
+
+    .readButton {
+        margin: 0;                 /* 👈 сброс */
+    }
+}

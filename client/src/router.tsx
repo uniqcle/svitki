@@ -7,6 +7,7 @@ import { SingleContent } from "@/components/layout/SingleContent";
 import { AuthorPage } from "./pages/AuthorPage/AuthorPage";
 import { TranslatorsListPage } from "./pages/TranslatorsListPage/TranslatorsListPage";
 import { TranslatorPage } from "./pages/TranslatorPage/TranslatorPage";
+import { TitlePage } from "./pages/TitlePage/TitlePage";
 
 export const router = createBrowserRouter([
     {
@@ -24,17 +25,14 @@ export const router = createBrowserRouter([
                 Component: TranslatorPage,
             },
 
+            { path: "work/:workId", Component: TitlePage },
             {
-                path: "work/:workId",
+                path: "work/:workId/chapter/:chapterId",
                 Component: SingleContent,
-                children: [
-                    { index: true, Component: SingleContent },
-                    { path: "chapter/:chapterId", Component: SingleContent },
-                    {
-                        path: "chapter/:chapterId/page/:pageId",
-                        Component: SingleContent,
-                    },
-                ],
+            },
+            {
+                path: "work/:workId/chapter/:chapterId/page/:pageId",
+                Component: SingleContent,
             },
         ],
     },
