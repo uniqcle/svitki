@@ -4,7 +4,9 @@ import {
     LuHeadphones,
     LuBookmark,
     LuBookOpen,
+    LuLandmark,
 } from "react-icons/lu";
+import { GrCatalog } from "react-icons/gr";
 
 export function Footer() {
     return (
@@ -12,13 +14,13 @@ export function Footer() {
             <div className="footer-container">
                 <div>
                     <div className="is-active">
-                        <LuHouse />
+                        <LuLandmark />
                         <span>Главная</span>
                     </div>
                 </div>
                 <div>
-                    <LuBookOpen />
-                    <span>Сочинения</span>
+                    <GrCatalog />
+                    <span>Каталог</span>
                 </div>
                 <div>
                     <LuSearch />

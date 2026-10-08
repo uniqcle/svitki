@@ -57,10 +57,10 @@ export function TitlePage() {
                 <Tabs defaultValue="book_index">
                     <TabsList>
                         <TabsTrigger value="book_index">Оглавление</TabsTrigger>
-                        <TabsTrigger value="book_info">Praefatio</TabsTrigger>
                         <TabsTrigger value="book_characters">
                             Персонажи
                         </TabsTrigger>
+                        <TabsTrigger value="book_info">Преамбула</TabsTrigger>
                     </TabsList>
 
                     <TabsContent value="book_index">
